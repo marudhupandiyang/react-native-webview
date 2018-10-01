@@ -249,7 +249,7 @@ class WebView extends React.Component<WebViewSharedProps, State> {
 
     const webView = (
       <NativeWebView
-        ref={this.webViewRef}
+        ref={(el) => {this.webViewRef = el; }}
         key="webViewKey"
         style={webViewStyles}
         source={resolveAssetSource(source)}
@@ -384,7 +384,7 @@ class WebView extends React.Component<WebViewSharedProps, State> {
    * Returns the native `WebView` node.
    */
   getWebViewHandle = () => {
-    return ReactNative.findNodeHandle(this.webViewRef.current);
+    return ReactNative.findNodeHandle(this.webViewRef);
   };
 
   _onLoadingStart = (event: WebViewNavigationEvent) => {
